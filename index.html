@@ -2,83 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DiTengah — Fair Meeting Point Finder</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DiTengah – Find the fairest meeting point</title>
 
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #f8f9fb, #ffffff);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f7f8fa;
       margin: 0;
+      padding: 0;
       color: #1f2937;
     }
 
     .container {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 24px 16px 64px;
+      padding: 32px 20px 64px;
     }
 
-    header {
+    .brand {
       text-align: center;
       margin-bottom: 32px;
     }
 
-    header h1 {
-      font-size: 32px;
+    .brand h1 {
+      font-size: 36px;
       margin: 0;
       letter-spacing: -0.5px;
     }
 
-    header p {
+    .brand p {
       margin-top: 8px;
-      font-size: 15px;
+      font-size: 16px;
       color: #6b7280;
     }
 
     .card {
       background: #ffffff;
-      border: 1px solid #e5e7eb;
       border-radius: 12px;
-      padding: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
       margin-bottom: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
     .card h2 {
       margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 18px;
+      font-size: 20px;
+      margin-bottom: 16px;
     }
 
-    ol {
-      padding-left: 18px;
-    }
-
-    ol li {
-      font-size: 14px;
-      margin-bottom: 8px;
+    .how-to ol {
+      padding-left: 20px;
+      line-height: 1.6;
     }
 
     .field {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     label {
       display: block;
+      font-weight: 600;
       margin-bottom: 6px;
-      font-size: 13px;
-      font-weight: 500;
     }
 
     input {
       width: 100%;
       padding: 10px 12px;
-      font-size: 14px;
-      border: 1px solid #d1d5db;
       border-radius: 8px;
-      box-sizing: border-box;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
     }
 
     input:focus {
@@ -86,53 +79,48 @@
       border-color: #2563eb;
     }
 
-    .actions {
-      margin-top: 16px;
-    }
-
     button {
-      background-color: #2563eb;
-      color: white;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
       border: none;
-      padding: 10px 16px;
-      font-size: 14px;
-      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
     }
 
-    button:disabled {
-      background-color: #9ca3af;
+    button.primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    button.primary:disabled {
+      background: #9ca3af;
       cursor: not-allowed;
     }
 
-    #result {
-      margin-top: 16px;
-      font-size: 14px;
+    .result {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .result a {
+      display: block;
+      word-break: break-all;
+      margin-bottom: 12px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
     }
 
     .copy-btn {
-      margin-left: 8px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      vertical-align: middle;
+      background: #e5e7eb;
+      color: #111827;
     }
 
-    .copy-btn svg {
-      width: 18px;
-      height: 18px;
-      stroke: #2563eb;
-    }
-
-    .success {
-      font-size: 13px;
-      color: #059669;
-      margin-top: 6px;
-    }
-
-    footer {
-      margin-top: 48px;
+    .footer {
       text-align: center;
+      margin-top: 48px;
       font-size: 13px;
       color: #9ca3af;
     }
@@ -142,55 +130,55 @@
 <body>
   <div class="container">
 
-    <header>
+    <!-- BRAND -->
+    <div class="brand">
       <h1>DiTengah</h1>
-      <p>Find the fairest meeting point between two locations</p>
-    </header>
+      <p>Find the fairest meeting point between two locations.</p>
+    </div>
 
-    <section class="card">
-      <h2>How to Use</h2>
+    <!-- HOW TO USE -->
+    <div class="card how-to">
+      <h2>How to use</h2>
       <ol>
-        <li>Decide two locations (Location A and Location B).</li>
-        <li>Search each location in Google Maps.</li>
-        <li>Right-click the pin and copy the coordinates.</li>
-        <li>Paste both coordinates below.</li>
-        <li>Enter the type or brand of place you want to meet at.</li>
+        <li>Decide location A and location B.</li>
+        <li>Open Google Maps and search for location A or B.</li>
+        <li>Right-click on the pinned location.</li>
+        <li>Click the top option to copy the coordinates (latitude, longitude).</li>
+        <li>Paste the coordinates for both location A and B below.</li>
+        <li>Choose what kind of place you want to meet at (e.g. cafe, restaurant, mosque, brand name).</li>
       </ol>
-    </section>
+    </div>
 
-    <section class="card">
+    <!-- TOOL -->
+    <div class="card">
       <div class="field">
-        <label>Location A (lat, long)</label>
-        <input id="pointA" oninput="validateForm()" />
-      </div>
-
-      <div class="field">
-        <label>Location B (lat, long)</label>
-        <input id="pointB" oninput="validateForm()" />
+        <label>Location A (latitude, longitude)</label>
+        <input id="coordA" placeholder="-6.21462, 106.84513" />
       </div>
 
       <div class="field">
-        <label>Meeting place type</label>
-        <input
-          id="keyword"
-          placeholder="e.g. cafe, restaurant, mosque, Indomaret, McDonald's"
-          oninput="validateForm()"
-        />
+        <label>Location B (latitude, longitude)</label>
+        <input id="coordB" placeholder="-6.12143, 106.77412" />
       </div>
 
-      <div class="actions">
-        <button id="searchBtn" onclick="runSearch()" disabled>
-          Find Meeting Point
-        </button>
+      <div class="field">
+        <label>What kind of place do you want to meet at?</label>
+        <input id="ksp" placeholder="e.g. cafe, restaurant, Indomaret, mosque" />
       </div>
 
-      <div id="result"></div>
-      <div id="copyStatus" class="success"></div>
-    </section>
+      <button id="searchBtn" class="primary" disabled>
+        Find meeting point
+      </button>
 
-    <footer>
-      Built with ❤️ to help people meet in the middle
-    </footer>
+      <div class="result" id="result">
+        <a id="mapsLink" target="_blank"></a>
+        <button class="copy-btn" id="copyBtn">Copy Google Maps link</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      Built with ❤️ to help people meet in the middle.
+    </div>
 
   </div>
 
